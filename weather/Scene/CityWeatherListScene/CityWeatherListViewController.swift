@@ -1,5 +1,5 @@
 //
-//  WeatherViewController.swift
+//  CityWeatherListViewController.swift
 //  weather
 //
 //  Created by JiangXiaoMing on 2019/6/6.
@@ -8,8 +8,11 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
+class CityWeatherListViewController: UIViewController {
 
+    let viewModel = CityWeatherListViewModel();
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

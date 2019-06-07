@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zu8-py-Dqh">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--City Weather Detail View Controller-->
+        <scene sceneID="ssK-MD-vqo">
+            <objects>
+                <viewController storyboardIdentifier="CityWeatherDetailViewControllerReuse1" id="6Sy-Vc-k10" customClass="CityWeatherDetailViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HyS-0h-Ryt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWc-fv-umd">
+                                <rect key="frame" x="347" y="832" width="39" height="30"/>
+                                <state key="normal" title="menu"/>
+                                <connections>
+                                    <segue destination="edP-Ma-60P" kind="show" id="Plj-29-2xv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npy-Wp-IRn">
+                                <rect key="frame" x="191.66666666666666" y="124" width="31" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="05v-IU-iwa">
+                                <rect key="frame" x="187.66666666666666" y="825" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.096373205370000006" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="05v-IU-iwa" firstAttribute="bottom" secondItem="prA-cr-5Aw" secondAttribute="bottom" id="CvX-YW-ysD"/>
+                            <constraint firstItem="Npy-Wp-IRn" firstAttribute="top" secondItem="prA-cr-5Aw" secondAttribute="top" constant="80" id="J7S-Kh-jdA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OWc-fv-umd" secondAttribute="trailing" constant="8" id="M7q-oF-aux"/>
+                            <constraint firstItem="Npy-Wp-IRn" firstAttribute="centerX" secondItem="HyS-0h-Ryt" secondAttribute="centerX" id="Ov1-D0-gPT"/>
+                            <constraint firstItem="OWc-fv-umd" firstAttribute="bottom" secondItem="HyS-0h-Ryt" secondAttribute="bottomMargin" id="Rs4-fw-p4k"/>
+                            <constraint firstItem="05v-IU-iwa" firstAttribute="centerX" secondItem="HyS-0h-Ryt" secondAttribute="centerX" id="d6z-Eq-bmv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="prA-cr-5Aw"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="05v-IU-iwa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="J7S-Kh-jdA"/>
+                                <exclude reference="Ov1-D0-gPT"/>
+                                <exclude reference="CvX-YW-ysD"/>
+                                <exclude reference="d6z-Eq-bmv"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="05v-IU-iwa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="J7S-Kh-jdA"/>
+                                <include reference="Ov1-D0-gPT"/>
+                                <include reference="CvX-YW-ysD"/>
+                                <include reference="d6z-Eq-bmv"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="reuseId" value="CityWeatherDetailViewControllerReuse1"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="Npy-Wp-IRn" id="4cq-cF-33Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sZZ-LQ-u9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792.75362318840587" y="890.625"/>
+        </scene>
+        <!--City Weather List View Controller-->
+        <scene sceneID="fsv-7y-P7F">
+            <objects>
+                <viewController id="edP-Ma-60P" customClass="CityWeatherListViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dnR-Gt-1K0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90R-Cd-bks">
+                                <rect key="frame" x="190" y="433" width="34" height="30"/>
+                                <state key="normal" title="back"/>
+                                <connections>
+                                    <action selector="hero_dismissViewController" destination="edP-Ma-60P" eventType="touchUpInside" id="lma-p6-PGu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="90R-Cd-bks" firstAttribute="centerX" secondItem="dnR-Gt-1K0" secondAttribute="centerX" id="C4x-Nr-DQv"/>
+                            <constraint firstItem="90R-Cd-bks" firstAttribute="centerY" secondItem="dnR-Gt-1K0" secondAttribute="centerY" id="TDQ-n9-TNZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cmd-95-9mw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wLt-MK-Icx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1954" y="891"/>
+        </scene>
+        <!--City Weather Detail View Controller-->
+        <scene sceneID="wrv-xQ-Lpi">
+            <objects>
+                <viewController storyboardIdentifier="CityWeatherDetailViewControllerReuse0" id="zu8-py-Dqh" customClass="CityWeatherDetailViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hcs-oy-3xz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGY-j3-Su8">
+                                <rect key="frame" x="347" y="832" width="39" height="30"/>
+                                <state key="normal" title="menu"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OU8-wt-Czn">
+                                <rect key="frame" x="191.66666666666666" y="124" width="31" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="K15-kI-R4m">
+                                <rect key="frame" x="187.66666666666666" y="825" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="K15-kI-R4m" firstAttribute="bottom" secondItem="l9o-hT-o5X" secondAttribute="bottom" id="OSm-xF-ZJe"/>
+                            <constraint firstItem="K15-kI-R4m" firstAttribute="centerX" secondItem="Hcs-oy-3xz" secondAttribute="centerX" id="RQm-99-lWB"/>
+                            <constraint firstItem="OU8-wt-Czn" firstAttribute="top" secondItem="l9o-hT-o5X" secondAttribute="top" constant="80" id="mAk-Iq-3Te"/>
+                            <constraint firstItem="OU8-wt-Czn" firstAttribute="centerX" secondItem="Hcs-oy-3xz" secondAttribute="centerX" id="tdi-IK-30z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BGY-j3-Su8" secondAttribute="trailing" constant="8" id="w4k-3O-OXQ"/>
+                            <constraint firstItem="BGY-j3-Su8" firstAttribute="bottom" secondItem="Hcs-oy-3xz" secondAttribute="bottomMargin" id="zkh-jv-VGk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="l9o-hT-o5X"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="K15-kI-R4m"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="mAk-Iq-3Te"/>
+                                <exclude reference="tdi-IK-30z"/>
+                                <exclude reference="OSm-xF-ZJe"/>
+                                <exclude reference="RQm-99-lWB"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="K15-kI-R4m"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="mAk-Iq-3Te"/>
+                                <include reference="tdi-IK-30z"/>
+                                <include reference="OSm-xF-ZJe"/>
+                                <include reference="RQm-99-lWB"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="reuseId" value="CityWeatherDetailViewControllerReuse0"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="OU8-wt-Czn" id="fYd-SM-u0z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iCP-ue-XHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93" y="891"/>
+        </scene>
+    </scenes>
+</document>
