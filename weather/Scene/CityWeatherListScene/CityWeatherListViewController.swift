@@ -19,6 +19,7 @@ class CityWeatherListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //bind data
         Observable.collection(from: viewModel.cities)
                 .bind(to: tableView.rx.items) { (collectionView, row, city) in
                     let indexPath = IndexPath(row: row, section: 0)
@@ -38,6 +39,7 @@ class CityWeatherListViewController: UIViewController {
     }
 
     @IBAction func addCityAction(_ sender: Any) {
+        
         let alertController = UIAlertController(title: "Sorry",
                 message: "It's not designed yet？", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

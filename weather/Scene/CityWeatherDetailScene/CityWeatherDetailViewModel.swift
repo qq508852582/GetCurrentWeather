@@ -30,6 +30,8 @@ class CityWeatherDetailViewModel {
 
     var city: CityWeatherModel? {
         didSet {
+            //map data after set
+            
             let rx_city = Observable.from(object: self.city!)
             rx_city.map {
                 $0.city
@@ -68,11 +70,16 @@ class CityWeatherDetailViewModel {
     }
 
     func viewDidLoad() {
+        
+    
         Observable.collection(from: cities)
                 .subscribe(onNext: { cities in
-                    print(cities)
+                    
+                    //update city list
                     self.rx_citiesNumber.accept(cities.count)
                     if (self.city == nil && cities.count > 0) {
+                        
+                        //using the first city for the very first time ,there's no city passed in at that time
                         self.city = cities.first;
                     }
                 })

@@ -29,10 +29,4 @@ class CityWeatherFactory {
         }
     }
 
-    static func addCity() {
-
-    }
-
-    static func removeCity() {
-    }
 }

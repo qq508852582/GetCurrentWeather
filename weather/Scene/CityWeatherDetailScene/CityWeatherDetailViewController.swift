@@ -12,6 +12,7 @@ import RxCocoa
 import Hero
 import Kingfisher
 
+//we need to same Vc in SB,then we can use Hero to replace one to another. so we need the id for the VC in SB
 let reuseIDs = ["CityWeatherDetailViewControllerReuse0", "CityWeatherDetailViewControllerReuse1"]
 
 class CityWeatherDetailViewController: UIViewController {
@@ -24,15 +25,15 @@ class CityWeatherDetailViewController: UIViewController {
     @IBOutlet weak var updateTimeValueLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
 
+    let disposeBag = DisposeBag()
+    private let viewModel = CityWeatherDetailViewModel();
+    var panGR: UIPanGestureRecognizer!
+    
     var city: CityWeatherModel? {
         didSet {
             self.viewModel.city = self.city
         }
     }
-
-    let disposeBag = DisposeBag()
-    private let viewModel = CityWeatherDetailViewModel();
-    var panGR: UIPanGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,6 @@ class CityWeatherDetailViewController: UIViewController {
         panGR = UIPanGestureRecognizer(target: self, action: #selector(pan))
         view.addGestureRecognizer(panGR)
         bindData()
-        // Do any additional setup after loading the view.
     }
 
     private func bindData() {
@@ -70,6 +70,8 @@ class CityWeatherDetailViewController: UIViewController {
     }
 
 
+    
+    // hero animation
     func applyShrinkModifiers() {
         view.hero.modifiers = nil
     }
