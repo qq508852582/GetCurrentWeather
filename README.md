@@ -1,7 +1,7 @@
 # GetCurrentWeather
 this is a demo of swift
 
-###About the project
+## About the project
 - Platform:iOS 10.0 or new
 - Using Swift 5.0 
 - Using MVVM for data-flow
@@ -10,5 +10,5 @@ this is a demo of swift
 - Using [Moya](https://github.com/Moya/Moya) for the api-service
 - Using [Hero](https://github.com/HeroTransitions/Hero) for transition animation
 
-###UML
+## UML
 ![UML](https://github.com/qq508852582/GetCurrentWeather/blob/master/UML.png)
