@@ -3,7 +3,7 @@
 
 target 'weather' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  platform :ios, '9.0'
+  platform :ios, '10.0'
   use_frameworks!
   pod 'Hero'
   pod 'RealmSwift'
@@ -11,6 +11,8 @@ target 'weather' do
   pod 'RxCocoa', '~> 5'
   pod 'RxRealm'
   pod 'Moya/RxSwift', '~> 14.0.0-alpha.1'
+  pod 'Kingfisher', '~> 5.0'
+
 
 end
 

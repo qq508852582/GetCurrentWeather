@@ -10,30 +10,43 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Hero
-
+import Kingfisher
 let reuseIDs = ["CityWeatherDetailViewControllerReuse0", "CityWeatherDetailViewControllerReuse1"]
 class CityWeatherDetailViewController: UIViewController {
     @IBInspectable var reuseId:String!
-    let disposeBag = DisposeBag()
-
-    private let viewModel = CityWeatherDetailViewModel();
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var conditionIcon: UIImageView!
+    @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var windSpeedValueLabel: UILabel!
+    @IBOutlet weak var updateTimeValueLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
+    let disposeBag = DisposeBag()
+    private let viewModel = CityWeatherDetailViewModel();
     var panGR: UIPanGestureRecognizer!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
         panGR = UIPanGestureRecognizer(target: self, action: #selector(pan))
         view.addGestureRecognizer(panGR)
-        
         bindData()
         // Do any additional setup after loading the view.
     }
     
     private func bindData(){
         viewModel.rx_cityName.bind(to: cityNameLabel.rx.text).disposed(by: disposeBag)
+        viewModel.rx_temperature.bind(to: temperatureLabel.rx.text).disposed(by: disposeBag)
+        viewModel.rx_conditionText.bind(to: conditionLabel.rx.text).disposed(by: disposeBag)
+        viewModel.rx_windSpeed.bind(to: windSpeedValueLabel.rx.text).disposed(by: disposeBag)
+        viewModel.rx_updateTime.bind(to: updateTimeValueLabel.rx.text).disposed(by: disposeBag)
+        viewModel.rx_conditionIcon.subscribe(onNext:{
+            self.conditionIcon.kf.setImage(with: $0)
+        }).disposed(by: disposeBag)
+        viewModel.rx_cityIndex.bind(to: pageControl.rx.currentPage).disposed(by: disposeBag)
+        viewModel.rx_citiesNumber.bind(to: pageControl.rx.numberOfPages).disposed(by: disposeBag)
 
-
+        
     }
     
     func applyShrinkModifiers() {
