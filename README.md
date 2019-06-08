@@ -16,3 +16,13 @@ this is a demo of swift
 
 ### UML
 ![UML](https://github.com/qq508852582/GetCurrentWeather/blob/master/UML.png)
+
+### Run the demo
+- download or pull the project
+- go into the project directory
+- pod install
+- open the project with Xcode
+- run 
+
+### Todo
+- unit test is not done yet
