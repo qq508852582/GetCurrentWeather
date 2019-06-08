@@ -20,6 +20,8 @@
 		8B1B5E4E22A98D130046F6E6 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5E4D22A98D130046F6E6 /* CityModel.swift */; };
 		8B1B5E5022AA2D430046F6E6 /* CityWeatherFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5E4F22AA2D430046F6E6 /* CityWeatherFactory.swift */; };
 		8B1B5E5222AA4D350046F6E6 /* TransitionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5E5122AA4D350046F6E6 /* TransitionState.swift */; };
+		8B1B5E5822AA94C90046F6E6 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5E5722AA94C90046F6E6 /* WeatherService.swift */; };
+		8B1B5E5D22AAE20F0046F6E6 /* CityWeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5E5C22AAE20F0046F6E6 /* CityWeatherListTableViewCell.swift */; };
 		AEAF4A6DC9D2E4462078D878 /* Pods_weatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE937EE31FF146D28232452E /* Pods_weatherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		8B1B5E4D22A98D130046F6E6 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		8B1B5E4F22AA2D430046F6E6 /* CityWeatherFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherFactory.swift; sourceTree = "<group>"; };
 		8B1B5E5122AA4D350046F6E6 /* TransitionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionState.swift; sourceTree = "<group>"; };
+		8B1B5E5722AA94C90046F6E6 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherService.swift; path = ../Model/WeatherService.swift; sourceTree = "<group>"; };
+		8B1B5E5C22AAE20F0046F6E6 /* CityWeatherListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherListTableViewCell.swift; sourceTree = "<group>"; };
 		901933450890A4F0FD7D08F3 /* Pods-weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather.debug.xcconfig"; path = "Target Support Files/Pods-weather/Pods-weather.debug.xcconfig"; sourceTree = "<group>"; };
 		A442AEB2EACC7F763A91375F /* Pods_weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE937EE31FF146D28232452E /* Pods_weatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +135,7 @@
 		8B08C0EE22A7EC3000BEA992 /* weather */ = {
 			isa = PBXGroup;
 			children = (
+				8B1B5E5B22AA95290046F6E6 /* Service */,
 				8B1B5E4A22A978290046F6E6 /* Model */,
 				8B03C41A22A82DFD0000990B /* Scene */,
 				8B08C0EF22A7EC3000BEA992 /* AppDelegate.swift */,
@@ -146,6 +151,7 @@
 			children = (
 				8B1B5E3622A969230046F6E6 /* CityWeatherListViewController.swift */,
 				8B1B5E3822A969430046F6E6 /* CityWeatherListViewModel.swift */,
+				8B1B5E5C22AAE20F0046F6E6 /* CityWeatherListTableViewCell.swift */,
 			);
 			path = CityWeatherListScene;
 			sourceTree = "<group>";
@@ -176,6 +182,14 @@
 				8B1B5E5122AA4D350046F6E6 /* TransitionState.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8B1B5E5B22AA95290046F6E6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8B1B5E5722AA94C90046F6E6 /* WeatherService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +410,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B1B5E5822AA94C90046F6E6 /* WeatherService.swift in Sources */,
+				8B1B5E5D22AAE20F0046F6E6 /* CityWeatherListTableViewCell.swift in Sources */,
 				8B1B5E3122A968AA0046F6E6 /* CityWeatherDetailViewController.swift in Sources */,
 				8B1B5E5022AA2D430046F6E6 /* CityWeatherFactory.swift in Sources */,
 				8B1B5E3722A969230046F6E6 /* CityWeatherListViewController.swift in Sources */,

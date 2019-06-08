@@ -12,12 +12,11 @@ import RealmSwift
 import RxRealm
 let realm = try! Realm()
 class CityWeatherFactory {
-    
     static func initCities(){
         //Maybe we should use GPS or cloud data to init the list in real case.
         //As a demo, we use an array to init it .
-        if (realm.objects(CityModel.self).count == 0) {
-            let cities = [CityModel(name: "Sydney"),CityModel(name: "Melbourne"),CityModel(name: "Wollongong")]
+        if (realm.objects(CityWeatherModel.self).count == 0) {
+            let cities = [CityWeatherModel(city: "Sydney"),CityWeatherModel(city: "Melbourne"),CityWeatherModel(city: "Wollongong")]
             _ = Observable.from(optional: cities)
                 .subscribe(Realm.rx.add())
         }
@@ -28,6 +27,5 @@ class CityWeatherFactory {
     }
     
     static func removeCity(){
-        
     }
 }

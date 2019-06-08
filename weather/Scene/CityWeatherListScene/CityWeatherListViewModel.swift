@@ -10,14 +10,14 @@ import UIKit
 import RxSwift
 
 class CityWeatherListViewModel {
-    let cities = realm.objects(CityModel.self)
+    let cities = realm.objects(CityWeatherModel.self)
     let disposeBag = DisposeBag()
 
     init() {
-        Observable.collection(from: cities)
-            .subscribe { event in
-                print(event.element)
-            }
-            .disposed(by: disposeBag)
+//        Observable.collection(from: cities)
+//            .subscribe { event in
+//                print(event.element)
+//            }
+//            .disposed(by: disposeBag)
     }
 }

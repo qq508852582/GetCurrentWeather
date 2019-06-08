@@ -11,6 +11,7 @@ target 'weather' do
   pod 'RxCocoa', '~> 5'
   pod 'RxRealm'
   pod 'Moya/RxSwift', '~> 14.0.0-alpha.1'
+
 end
 
 

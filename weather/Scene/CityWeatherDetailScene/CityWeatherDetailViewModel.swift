@@ -11,11 +11,26 @@ import RxSwift
 import RxCocoa
 
 class CityWeatherDetailViewModel {
-    let cities = realm.objects(CityModel.self)
-    var city:CityModel?{
+    
+    
+    let cities = realm.objects(CityWeatherModel.self)
+    var previousCity:CityWeatherModel?{
+        get {
+                            let cityIndex = cities.firstIndex(of: city!)!
+            return cities[( cityIndex - 1 + cities.count ) % cities.count]
+        }
+    }
+    var nextCity:CityWeatherModel?{
+        get {
+            let cityIndex = cities.firstIndex(of: city!)!
+            return cities[( cityIndex + 1 ) % cities.count]
+        }
+    }
+    
+    var city:CityWeatherModel?{
         didSet{
            let rx_city = Observable.from(object: self.city!)
-            rx_city.map {$0.name}.bind(to: rx_cityName).disposed(by: disposeBag)
+            rx_city.map {$0.city}.bind(to: rx_cityName).disposed(by: disposeBag)
             self.city?.updateWeather()
         }
     }
@@ -24,6 +39,10 @@ class CityWeatherDetailViewModel {
     let rx_cityName = BehaviorRelay(value: "🔴")
     
     init() {
+       
+    }
+    
+    func viewDidLoad(){
         if (self.city == nil){
             Observable.collection(from: cities)
                 .subscribe(onNext: { cities in

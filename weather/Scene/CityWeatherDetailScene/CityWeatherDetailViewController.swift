@@ -22,6 +22,7 @@ class CityWeatherDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewDidLoad()
         panGR = UIPanGestureRecognizer(target: self, action: #selector(pan))
         view.addGestureRecognizer(panGR)
         
@@ -30,9 +31,7 @@ class CityWeatherDetailViewController: UIViewController {
     }
     
     private func bindData(){
-//        viewModel.rx_cityName.bind(to: cityNameLabel.rx.text).disposed(by: disposeBag)
         viewModel.rx_cityName.bind(to: cityNameLabel.rx.text).disposed(by: disposeBag)
-//        Observable.from(object: viewModel.city)
 
 
     }
@@ -68,17 +67,16 @@ class CityWeatherDetailViewController: UIViewController {
                 let currentIndex = reuseIDs.firstIndex(of: reuseId)!
                 let nextIndex = (currentIndex + (nextState == .slidingLeft ? 1 : reuseIDs.count - 1)) % reuseIDs.count
                 nextVC = self.storyboard!.instantiateViewController(withIdentifier: reuseIDs[nextIndex]) as? CityWeatherDetailViewController
-//                let cityIndex = cities.firstIndex(of: city!)!
                 
                 if nextState == .slidingLeft {
-//                    nextVC?.city = cities[( cityIndex + 1 ) % cities.count]
+                    nextVC?.viewModel.city = self.viewModel.nextCity
                     
                     applyShrinkModifiers()
                     nextVC!.applySlideModifiers()
                     
                 } else {
-//                    nextVC?.city = cities[(cityIndex - 1 + cities.count) % cities.count]
-                    
+                    nextVC?.viewModel.city = self.viewModel.previousCity
+
                     applySlideModifiers()
                     nextVC!.applyShrinkModifiers()
                 }

@@ -89,25 +89,103 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90R-Cd-bks">
-                                <rect key="frame" x="190" y="433" width="34" height="30"/>
-                                <state key="normal" title="back"/>
-                                <connections>
-                                    <action selector="hero_dismissViewController" destination="edP-Ma-60P" eventType="touchUpInside" id="lma-p6-PGu"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KnW-KB-Kwe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="lc3-1z-2OL">
+                                    <rect key="frame" x="0.0" y="128" width="414" height="67"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5M-ew-th3">
+                                            <rect key="frame" x="360" y="8" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-ju-xab">
+                                            <rect key="frame" x="8" y="8" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="hero_dismissViewController" destination="edP-Ma-60P" eventType="touchUpInside" id="gi0-28-NcX"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1pF-ju-xab" firstAttribute="leading" secondItem="lc3-1z-2OL" secondAttribute="leading" constant="8" id="DlN-eN-N3i"/>
+                                        <constraint firstItem="1pF-ju-xab" firstAttribute="top" secondItem="lc3-1z-2OL" secondAttribute="top" constant="8" id="Q7l-zh-v5z"/>
+                                        <constraint firstAttribute="trailing" secondItem="b5M-ew-th3" secondAttribute="trailing" constant="8" id="bPk-vU-gfr"/>
+                                        <constraint firstItem="b5M-ew-th3" firstAttribute="top" secondItem="lc3-1z-2OL" secondAttribute="top" constant="8" id="ll1-WH-fXO"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityWeatherListTableViewCell" id="fLo-Us-4hL" customClass="CityWeatherListTableViewCell" customModule="weather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fLo-Us-4hL" id="uNF-hl-z9Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-hW-d4b">
+                                                    <rect key="frame" x="10" y="5" width="90" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="hBF-hW-d4b" secondAttribute="height" multiplier="1:1" id="CuO-id-IJw"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yh-wg-2PJ">
+                                                    <rect key="frame" x="110" y="39.666666666666664" width="31" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9A-gQ-ILR">
+                                                    <rect key="frame" x="373" y="39.666666666666664" width="31" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6yh-wg-2PJ" firstAttribute="centerY" secondItem="uNF-hl-z9Y" secondAttribute="centerY" id="8gA-ub-8QZ"/>
+                                                <constraint firstItem="A9A-gQ-ILR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6yh-wg-2PJ" secondAttribute="trailing" constant="20" id="LEy-MY-J4D"/>
+                                                <constraint firstItem="hBF-hW-d4b" firstAttribute="top" secondItem="uNF-hl-z9Y" secondAttribute="top" constant="5" id="VAn-BP-ZjP"/>
+                                                <constraint firstItem="6yh-wg-2PJ" firstAttribute="leading" secondItem="hBF-hW-d4b" secondAttribute="trailing" constant="10" id="Wux-bK-TDZ"/>
+                                                <constraint firstItem="A9A-gQ-ILR" firstAttribute="centerY" secondItem="uNF-hl-z9Y" secondAttribute="centerY" id="duk-z3-ekV"/>
+                                                <constraint firstItem="hBF-hW-d4b" firstAttribute="leading" secondItem="uNF-hl-z9Y" secondAttribute="leading" constant="10" id="fND-Rz-xiO"/>
+                                                <constraint firstAttribute="bottom" secondItem="hBF-hW-d4b" secondAttribute="bottom" constant="5" id="gIQ-iX-PZC"/>
+                                                <constraint firstItem="A9A-gQ-ILR" firstAttribute="trailing" secondItem="uNF-hl-z9Y" secondAttribute="trailingMargin" constant="10" id="yoz-Ur-yjs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="cityLabel" destination="6yh-wg-2PJ" id="KXf-D2-Rg5"/>
+                                            <outlet property="conditionIcon" destination="hBF-hW-d4b" id="Zb1-B1-8ad"/>
+                                            <outlet property="temperatureLabel" destination="A9A-gQ-ILR" id="Rb1-QV-vaD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="90R-Cd-bks" firstAttribute="centerX" secondItem="dnR-Gt-1K0" secondAttribute="centerX" id="C4x-Nr-DQv"/>
-                            <constraint firstItem="90R-Cd-bks" firstAttribute="centerY" secondItem="dnR-Gt-1K0" secondAttribute="centerY" id="TDQ-n9-TNZ"/>
+                            <constraint firstItem="KnW-KB-Kwe" firstAttribute="top" secondItem="dnR-Gt-1K0" secondAttribute="top" id="LnX-3P-OHc"/>
+                            <constraint firstItem="KnW-KB-Kwe" firstAttribute="leading" secondItem="cmd-95-9mw" secondAttribute="leading" id="M25-WI-RAA"/>
+                            <constraint firstItem="cmd-95-9mw" firstAttribute="bottom" secondItem="KnW-KB-Kwe" secondAttribute="bottom" id="O3c-tj-zuI"/>
+                            <constraint firstItem="KnW-KB-Kwe" firstAttribute="trailing" secondItem="cmd-95-9mw" secondAttribute="trailing" id="nhp-dV-C62"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cmd-95-9mw"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="tableView" destination="KnW-KB-Kwe" id="oNZ-8C-Ye2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLt-MK-Icx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="891"/>
+            <point key="canvasLocation" x="1953.6231884057972" y="890.625"/>
         </scene>
         <!--City Weather Detail View Controller-->
         <scene sceneID="wrv-xQ-Lpi">
