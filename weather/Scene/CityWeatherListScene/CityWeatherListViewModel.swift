@@ -14,10 +14,5 @@ class CityWeatherListViewModel {
     let disposeBag = DisposeBag()
 
     init() {
-//        Observable.collection(from: cities)
-//            .subscribe { event in
-//                print(event.element)
-//            }
-//            .disposed(by: disposeBag)
     }
 }

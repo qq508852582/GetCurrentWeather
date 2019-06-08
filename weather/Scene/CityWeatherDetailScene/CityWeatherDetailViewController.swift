@@ -11,9 +11,11 @@ import RxSwift
 import RxCocoa
 import Hero
 import Kingfisher
+
 let reuseIDs = ["CityWeatherDetailViewControllerReuse0", "CityWeatherDetailViewControllerReuse1"]
+
 class CityWeatherDetailViewController: UIViewController {
-    @IBInspectable var reuseId:String!
+    @IBInspectable var reuseId: String!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionIcon: UIImageView!
@@ -21,16 +23,17 @@ class CityWeatherDetailViewController: UIViewController {
     @IBOutlet weak var windSpeedValueLabel: UILabel!
     @IBOutlet weak var updateTimeValueLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
-    
-    var city:CityWeatherModel?{
-        didSet{
+
+    var city: CityWeatherModel? {
+        didSet {
             self.viewModel.city = self.city
         }
     }
-    
+
     let disposeBag = DisposeBag()
     private let viewModel = CityWeatherDetailViewModel();
     var panGR: UIPanGestureRecognizer!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
@@ -39,44 +42,43 @@ class CityWeatherDetailViewController: UIViewController {
         bindData()
         // Do any additional setup after loading the view.
     }
-    
-    private func bindData(){
+
+    private func bindData() {
         viewModel.rx_cityName.bind(to: cityNameLabel.rx.text).disposed(by: disposeBag)
-        viewModel.rx_cityName.subscribe(onNext:{[weak self] in
+        viewModel.rx_cityName.subscribe(onNext: { [weak self] in
             self?.cityNameLabel.hero.id = $0
             self?.conditionIcon.hero.id = "\($0):icon"
             self?.temperatureLabel.hero.id = "\($0):temperature"
         }).disposed(by: disposeBag)
-        
+
         viewModel.rx_temperature.bind(to: temperatureLabel.rx.text).disposed(by: disposeBag)
         viewModel.rx_conditionText.bind(to: conditionLabel.rx.text).disposed(by: disposeBag)
         viewModel.rx_windSpeed.bind(to: windSpeedValueLabel.rx.text).disposed(by: disposeBag)
         viewModel.rx_updateTime.bind(to: updateTimeValueLabel.rx.text).disposed(by: disposeBag)
-        viewModel.rx_conditionIcon.subscribe(onNext:{
+        viewModel.rx_conditionIcon.subscribe(onNext: {
             self.conditionIcon.kf.setImage(with: $0)
         }).disposed(by: disposeBag)
         viewModel.rx_cityIndex.bind(to: pageControl.rx.currentPage).disposed(by: disposeBag)
         viewModel.rx_citiesNumber.bind(to: pageControl.rx.numberOfPages).disposed(by: disposeBag)
 
-        
+
     }
+
     @IBAction func menuButtonAction(_ sender: Any) {
-       let listVC = self.storyboard!.instantiateViewController(withIdentifier: "cityList") as! CityWeatherListViewController
+        let listVC = self.storyboard!.instantiateViewController(withIdentifier: "cityList") as! CityWeatherListViewController
         hero.replaceViewController(with: listVC)
     }
-    
-    
+
+
     func applyShrinkModifiers() {
         view.hero.modifiers = nil
-        //        detailView.hero.modifiers = [.translate(x:-50, y:(view.center.y - detailView.center.y)/10), .scale(0.9), HeroModifier.duration(0.3)]
-        
     }
-    
+
     func applySlideModifiers() {
         view.hero.modifiers = [.translate(x: view.bounds.width), .duration(0.3), .beginWith(modifiers: [.zPosition(2)])]
-        
+
     }
-    
+
     var transitionState: TransitionState = .normal
     weak var nextVC: CityWeatherDetailViewController?
 
@@ -91,19 +93,19 @@ class CityWeatherDetailViewController: UIViewController {
             } else {
                 nextState = translateX < 0 ? .slidingLeft : .slidingRight
             }
-            
+
             if nextState != transitionState {
                 Hero.shared.cancel(animate: false)
                 let currentIndex = reuseIDs.firstIndex(of: reuseId)!
                 let nextIndex = (currentIndex + (nextState == .slidingLeft ? 1 : reuseIDs.count - 1)) % reuseIDs.count
                 nextVC = self.storyboard!.instantiateViewController(withIdentifier: reuseIDs[nextIndex]) as? CityWeatherDetailViewController
-                
+
                 if nextState == .slidingLeft {
                     nextVC?.viewModel.city = self.viewModel.nextCity
-                    
+
                     applyShrinkModifiers()
                     nextVC!.applySlideModifiers()
-                    
+
                 } else {
                     nextVC?.viewModel.city = self.viewModel.previousCity
 
