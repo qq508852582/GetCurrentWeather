@@ -9,36 +9,40 @@
 import UIKit
 import RxSwift
 import RxCocoa
+
 class CityWeatherListViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
-    let viewModel = CityWeatherListViewModel();
-
+    let viewModel = CityWeatherListViewModel()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Observable.from( viewModel.cities)
-            .bind(to: tableView.rx.items){ [weak self] (collectionView, row, element) in
+        Observable.collection( from: viewModel.cities)
+            .bind(to: tableView.rx.items){ [weak self] (collectionView, row, city) in
                 let indexPath = IndexPath(row: row, section: 0)
-                let cell = collectionView.dequeueReusableCell(                    withIdentifier: CityWeatherListTableViewCell.identifier,                    for: indexPath) as! CityWeatherListTableViewCell
-//                cell.config(element)
+                let cell = collectionView.dequeueReusableCell(withIdentifier: CityWeatherListTableViewCell.identifier,for: indexPath) as! CityWeatherListTableViewCell
+                cell.city = city
                 return cell
         }
+        .disposed(by: disposeBag)
         
-        
-        // Do any additional setup after loading the view.
+        tableView.rx.modelSelected(CityWeatherModel.self).subscribe(onNext: {[weak self] city in
+            
+            let listVC = self?.storyboard!.instantiateViewController(withIdentifier: reuseIDs.first!) as! CityWeatherDetailViewController
+            listVC.city = city
+            self?.hero.replaceViewController(with: listVC)
+            
+        }).disposed(by: disposeBag)
     }
-    
+    @IBAction func addCityAction(_ sender: Any) {
+        let alertController = UIAlertController(title: "Sorry",
+                                                message: "It's not designed yet？", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
 
-    /*
-    // MARK: - Navigation
+        self.present(alertController, animated: true, completion: nil)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }

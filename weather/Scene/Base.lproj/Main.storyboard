@@ -236,7 +236,7 @@
                                 </constraints>
                                 <state key="normal" image="menu"/>
                                 <connections>
-                                    <segue destination="edP-Ma-60P" kind="show" id="Plj-29-2xv"/>
+                                    <action selector="menuButtonAction:" destination="6Sy-Vc-k10" eventType="touchUpInside" id="adJ-ra-cfo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -314,43 +314,47 @@
         <!--City Weather List View Controller-->
         <scene sceneID="fsv-7y-P7F">
             <objects>
-                <viewController id="edP-Ma-60P" customClass="CityWeatherListViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cityList" id="edP-Ma-60P" customClass="CityWeatherListViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dnR-Gt-1K0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KnW-KB-Kwe">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KnW-KB-Kwe">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="lc3-1z-2OL">
-                                    <rect key="frame" x="0.0" y="128" width="414" height="67"/>
+                                    <rect key="frame" x="0.0" y="98" width="414" height="67"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5M-ew-th3">
-                                            <rect key="frame" x="360" y="8" width="46" height="30"/>
-                                            <state key="normal" title="Button"/>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-ju-xab">
-                                            <rect key="frame" x="8" y="8" width="46" height="30"/>
-                                            <state key="normal" title="Button"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5M-ew-th3">
+                                            <rect key="frame" x="194" y="8" width="26" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="26" id="VI2-4M-Drr"/>
+                                                <constraint firstAttribute="height" constant="26" id="Zeg-z0-gO6"/>
+                                            </constraints>
+                                            <state key="normal" image="plus"/>
                                             <connections>
-                                                <action selector="hero_dismissViewController" destination="edP-Ma-60P" eventType="touchUpInside" id="gi0-28-NcX"/>
+                                                <action selector="addCityAction:" destination="edP-Ma-60P" eventType="touchUpInside" id="92f-wC-wEe"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="1pF-ju-xab" firstAttribute="leading" secondItem="lc3-1z-2OL" secondAttribute="leading" constant="8" id="DlN-eN-N3i"/>
-                                        <constraint firstItem="1pF-ju-xab" firstAttribute="top" secondItem="lc3-1z-2OL" secondAttribute="top" constant="8" id="Q7l-zh-v5z"/>
+                                        <constraint firstItem="b5M-ew-th3" firstAttribute="centerX" secondItem="lc3-1z-2OL" secondAttribute="centerX" id="PD3-zk-t8k"/>
                                         <constraint firstAttribute="trailing" secondItem="b5M-ew-th3" secondAttribute="trailing" constant="8" id="bPk-vU-gfr"/>
                                         <constraint firstItem="b5M-ew-th3" firstAttribute="top" secondItem="lc3-1z-2OL" secondAttribute="top" constant="8" id="ll1-WH-fXO"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="bPk-vU-gfr"/>
+                                        </mask>
+                                    </variation>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityWeatherListTableViewCell" id="fLo-Us-4hL" customClass="CityWeatherListTableViewCell" customModule="weather" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fLo-Us-4hL" id="uNF-hl-z9Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-hW-d4b">
@@ -415,7 +419,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLt-MK-Icx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="1529"/>
+            <point key="canvasLocation" x="1131.8840579710145" y="1528.7946428571429"/>
         </scene>
         <!--City Weather Detail View Controller-->
         <scene sceneID="kyU-89-oiH">
@@ -643,7 +647,7 @@
                                 </constraints>
                                 <state key="normal" image="menu"/>
                                 <connections>
-                                    <segue destination="edP-Ma-60P" kind="show" id="lpE-XU-96I"/>
+                                    <action selector="menuButtonAction:" destination="KVM-mS-qoO" eventType="touchUpInside" id="iKW-Wm-jA0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -721,8 +725,6 @@
     </scenes>
     <resources>
         <image name="menu" width="64" height="64"/>
+        <image name="plus" width="64" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="lpE-XU-96I"/>
-    </inferredMetricsTieBreakers>
 </document>

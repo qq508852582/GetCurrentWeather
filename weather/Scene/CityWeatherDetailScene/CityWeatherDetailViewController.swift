@@ -22,6 +22,12 @@ class CityWeatherDetailViewController: UIViewController {
     @IBOutlet weak var updateTimeValueLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    var city:CityWeatherModel?{
+        didSet{
+            self.viewModel.city = self.city
+        }
+    }
+    
     let disposeBag = DisposeBag()
     private let viewModel = CityWeatherDetailViewModel();
     var panGR: UIPanGestureRecognizer!
@@ -36,6 +42,12 @@ class CityWeatherDetailViewController: UIViewController {
     
     private func bindData(){
         viewModel.rx_cityName.bind(to: cityNameLabel.rx.text).disposed(by: disposeBag)
+        viewModel.rx_cityName.subscribe(onNext:{[weak self] in
+            self?.cityNameLabel.hero.id = $0
+            self?.conditionIcon.hero.id = "\($0):icon"
+            self?.temperatureLabel.hero.id = "\($0):temperature"
+        }).disposed(by: disposeBag)
+        
         viewModel.rx_temperature.bind(to: temperatureLabel.rx.text).disposed(by: disposeBag)
         viewModel.rx_conditionText.bind(to: conditionLabel.rx.text).disposed(by: disposeBag)
         viewModel.rx_windSpeed.bind(to: windSpeedValueLabel.rx.text).disposed(by: disposeBag)
@@ -48,6 +60,11 @@ class CityWeatherDetailViewController: UIViewController {
 
         
     }
+    @IBAction func menuButtonAction(_ sender: Any) {
+       let listVC = self.storyboard!.instantiateViewController(withIdentifier: "cityList") as! CityWeatherListViewController
+        hero.replaceViewController(with: listVC)
+    }
+    
     
     func applyShrinkModifiers() {
         view.hero.modifiers = nil
